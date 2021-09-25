@@ -9,6 +9,7 @@ const createusercontroller = require('./controllers/createuser')
 const updateusercontroller = require('./controllers/updateusers')
 const isauthenticated = require('./config/isauthorised')
 const signincontroller = require('./controllers/signincontroller')
+const authcontroller = require('./controllers/authcontroller')
 const port = 5000;
 //mongodb connection
 //-------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ app.post('/updateuser', updateusercontroller.update)
 
 app.post('/signin', signincontroller.signin)
 
+app.post('/auth', authcontroller.auth)
 app.listen(port, ()=>{
     console.log('app is running at http://localhost:5000')
 })

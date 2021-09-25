@@ -4,31 +4,36 @@ import Home from './components/Home/Home';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Signin from './components/Signin/Signin';
 import SIgnup from './components/Signup/SIgnup';
-import Profile from './components/Maincontent/profile/Profile';
+import Profile from './components/profile/Profile';
+import Redir from './components/Redirect/Redir';
+import { useSelector } from 'react-redux';
+
 
 function App() {
-  const user = 'true'
-  const isauthenticated = 'true'
+  const auth = useSelector((state) => state.authslicered.auth)
+
   return (
     <Router>
        <div className="App">
        <Switch>
-          <Route path="/profile">
-            <Profile isauthenticated={isauthenticated}/>
+          <Route path="/redir">
+            <Redir/>
           </Route>
-          <Route path="/signin">
-            <Signin />
+          <Route exact path="/profile">
+            <Profile auth={auth}/>
+          </Route>
+          <Route exact path="/signin">
+            <Signin auth={auth}/>
           </Route>
           <Route path="/signup">
             <SIgnup />
           </Route>
           <Route exact path="/">
-            <Home user={user}/>
+            <Home/>
           </Route>
         </Switch>
     </div>

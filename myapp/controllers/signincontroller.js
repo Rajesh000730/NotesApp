@@ -3,7 +3,7 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 const handlesignin = (user)=>{
-    const jwtpayload = user.name
+    const jwtpayload = {name:user.name}
     const token = jwt.sign(jwtpayload,'JWT_SECRET')
     return {token:token,
             name:user.name,

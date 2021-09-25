@@ -8,9 +8,9 @@ function Nav(props) {
     return (
         <div className="main__container--nav">
             <div className="nav__elements--container">
-            {user=='true'?<Link to="/signin"><a >Sign In</a></Link>:<h1></h1>}
-            {user=='true'? <Link to="/signup"><a >Sign Up</a></Link>:<h1></h1>}
-            <a >Learn More</a>
+            {user==='true'?<Link to="/signin"><button >Sign In</button></Link>:<h1>no</h1>}
+            {user==='true'? <Link to="/signup"><button >Sign Up</button></Link>:<h1>no</h1>}
+            <button >Learn More</button>
             </div>
         </div>
     )

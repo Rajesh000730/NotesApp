@@ -2,13 +2,30 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import './Signin.css'
 import {useState} from 'react'
+import {  useDispatch } from 'react-redux'
+import {  increment } from '../../authslice'
 import axios from 'axios'
-function Signin() {
+function Signin(props) {
     const [name, setname] = useState('')
     const [age, setage] = useState('')
-    const [datar, setdatar] = useState()
-    const [state, setstate] = useState('true')
-    const [dataname,setdataname] = useState('')
+    const [auth, setauth] = useState(false)
+    const dispatch = useDispatch()
+    if(!props.auth)
+    {if(window.sessionStorage){
+    
+        axios.post('http://localhost:5000/auth',{token:window.sessionStorage.jwt})
+        .then(res=>setauth(res.data))
+        .catch(err=>console.log('err'))
+       
+    }
+    }
+    if(auth){
+        dispatch(increment())
+    }
+
+
+    
+     
     const handlename = (e)=>{
         setname(e.target.value)
     }
@@ -16,19 +33,28 @@ function Signin() {
         setage(e.target.value)
         console.log(age)
     }
+    const handlestorage = (data)=>{
+        window.sessionStorage.setItem('jwt', data.token)
+        dispatch(increment())
+        
+    }
     const handlesignin=()=>{
 
          axios.post('http://localhost:5000/signin', {name:name,age:age})
         .then(res=>res.data)
-        .then(data=>setstate(data.error))   
+        .then(data=>handlestorage(data))   
         .catch(err=>console.log(err));
         
         
+       
         
     }
-    if(state==='false'){
-       return <Redirect to='/profile'/>
+    if(props.auth){
+        return <Redirect to='/profile'/>
     }
+
+    
+
     
         return (
             <div className="signin__container">

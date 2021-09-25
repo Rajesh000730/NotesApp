@@ -18,7 +18,7 @@ font-family: 'Roboto', sans-serif;
 
 }
 
-.nav__elements--container a{
+.nav__elements--container button{
     font-size: 1.3rem;
     width: auto;
     height: auto;
@@ -29,11 +29,11 @@ font-family: 'Roboto', sans-serif;
     color: white;
     text-decoration: none
 }
-.nav__elements--container a:hover{
+.nav__elements--container button:hover{
     background-color: rgb(184, 12, 12);
     cursor: pointer;
 }
-.nav__elements--container a:active{
+.nav__elements--container button:active{
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background-color: rgb(230, 19, 19);
 }
