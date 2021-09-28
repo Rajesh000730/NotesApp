@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-function SIgnup() {
-    return (
-        <div>
-            <h1>signup</h1>
-        </div>
-    )
+const SIgnup = (props) => {
+  return (
+    <div>SIgnup</div>
+  )
 }
 
-export default SIgnup
+export default SIgnup;
