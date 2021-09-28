@@ -3,12 +3,13 @@ import React from 'react'
 import {useDispatch} from 'react-redux'
 import {  increment } from '../../authslice'
 import axios from 'axios'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Redirect } from 'react-router-dom'
 import Profilecomp from './Profilecomp'
 function Profile(props) {
     const [auth, setauth] = useState(false)
     const dispatch = useDispatch()
+    useEffect(() => {
     if(!props.auth)
     {if(window.sessionStorage){
     
@@ -18,12 +19,17 @@ function Profile(props) {
        
     }
     }
+
+  });
+
+    
     if(auth){
         dispatch(increment())
     }
 
     return(
         <div>
+            <div className="loader"></div>
             {props.auth?<Profilecomp/>:<h1>hello</h1>}
         </div>
         

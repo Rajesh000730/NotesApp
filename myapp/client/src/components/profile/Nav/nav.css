@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+
+.nav__container{
+width: 100%;
+height: 4rem;
+background-color: hsl(196, 100%, 89%);
+display: flex;
+align-items: center;
+justify-content: space-between;
+font-family: 'Roboto', sans-serif;
+}
+.nav__container button{
+	position: relative;
+	left: 10px;
+	font-size: 1.3rem;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    background-color: rgb(230, 19, 19);
+    border-style: none ;
+    border-radius: 3px;
+    color: white;
+    text-decoration: none
+}
+
+.nav__container button:hover{
+    background-color: rgb(184, 12, 12);
+    cursor: pointer;
+}
+.nav__container button:active{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgb(230, 19, 19);
+}
+
+.nav__elements--container{
+	width: 20%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav__elements--container button{
+    font-size: 1.3rem;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    background-color: rgb(230, 19, 19);
+    border-style: none ;
+    border-radius: 3px;
+    color: white;
+    text-decoration: none
+}
+.nav__elements--container button:hover{
+    background-color: rgb(184, 12, 12);
+    cursor: pointer;
+}
+.nav__elements--container button:active{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgb(230, 19, 19);
+}
+
+.profile--photo{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: black;
+	background-image: url('steve.jpeg');
+	background-size: contain;
+	object-fit: contain;
+}
+.profile--photo:hover{
+    cursor: pointer;
+}
+
+.user--details{
+	display: block;
+	position: absolute;
+	right: 65px;
+	min-width: 160px;
+	height: 190px;
+	background-color: #2e2e2e;
+	color: #ebebeb;
+	animation: ani 0.5s ;
+	padding: 20px;
+	line-height: 15px;
+	border-radius: 10px;
+	transform-origin: top;
+
+
+}
+.user--details p{
+	font-size: 1.07em	;
+    
+}
+
+@keyframes ani {
+	0%{
+		transform: scaleY(0);
+	}
+	100%{
+		transform: scaleY(1)
+	}
+}
+
+.none{
+	display: none;
+}
+
+.edit:hover {
+	cursor: pointer;
+
+}
+
+@media (max-width: 486px){
+	.nav__elements--container button{
+		display: none;
+	}
+}
+@media (max-width: 1111px){
+	.nav__elements--container button{
+		display: none;
+	}
+}
+@media (max-width: 1435px){
+	.nav__elements--container{
+		width: 30%;
+	}
+}

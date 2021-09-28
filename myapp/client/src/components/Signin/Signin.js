@@ -35,6 +35,7 @@ function Signin(props) {
     }
     const handlestorage = (data)=>{
         window.sessionStorage.setItem('jwt', data.token)
+        console.log(data)
         dispatch(increment())
         
     }

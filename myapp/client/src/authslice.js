@@ -6,22 +6,43 @@ export const counterSlice = createSlice({
   name: 'auth',
   initialState: {
     auth: false,
+    email:false,
+    password:false,
+    photo:false,
+    visible:"hidden"
   },
   reducers: {
     increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.auth = true
     },
     decrement:(state)=>{
         state.auth = false
-    }
+    },
+    setemailtrue:(state)=>{
+      state.email = true;
+      state.password = false;
+      state.photo = false;
+      state.visible = "visible"
+    },
+    setpasswordtrue:(state)=>{
+      state.password = true
+      state.email = false;
+      state.photo = false;
+      state.visible = "visible"
+    },
+    setfalse:(state)=>{
+      state.email = false;
+      state.password = false;
+      state.photo = false;
+      state.visible = "hidden"
+
+    },
+
+
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement } = counterSlice.actions
+export const { increment, decrement, setemailtrue, setpasswordtrue, setfalse } = counterSlice.actions
 
 export default counterSlice.reducer
