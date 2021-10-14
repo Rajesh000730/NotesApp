@@ -1,0 +1,39 @@
+.doses{
+	width: 300px;
+	min-height: 330px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	align-items: center;
+	padding: 25px;
+	margin-right:  40px;
+	margin-top: 40px;
+	margin-bottom: none	;
+	position: relative;
+	word-break: break-all;
+}
+
+.delete{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	color: white;
+}
+.delete:hover{
+    cursor: pointer;
+}
+
+.doses p{
+	font-size: 1.1em;
+}
+
+.doses h1{
+	text-decoration: underline; 
+}
+
+.doses button{
+	padding:7px; 
+}

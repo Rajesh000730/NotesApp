@@ -9,6 +9,9 @@ import Profilecomp from './Profilecomp'
 function Profile(props) {
     const [auth, setauth] = useState(false)
     const dispatch = useDispatch()
+ 
+    
+
     useEffect(() => {
     if(!props.auth)
     {if(window.sessionStorage){
@@ -19,6 +22,8 @@ function Profile(props) {
        
     }
     }
+    
+    
 
   });
 
@@ -30,7 +35,7 @@ function Profile(props) {
     return(
         <div>
             <div className="loader"></div>
-            {props.auth?<Profilecomp/>:<h1>hello</h1>}
+            {props.auth?<Profilecomp/>:<Redirect to="/signin" />}
         </div>
         
     )

@@ -2,6 +2,8 @@ import React, {useState}from 'react'
 import './profilecomp.css'
 import Nav from './Nav/Nav'
 import Email from './ChangeEmail/ChangeEmail'
+import ChangePassword from './changePassword/ChangePassword'
+import UserProfile from './userProfile/UserProfile'  
 import { useSelector } from 'react-redux';
 function Profilecomp() {
     const email = useSelector((state) => state.authslicered.email)
@@ -13,7 +15,7 @@ function Profilecomp() {
         
         <div className="profilecont">
             <Nav visible={visible}/>
-            {email?<Email/>:password?<h1>password</h1>:photo?<h1>photo</h1>:<h1>suck</h1>}
+            {email?<Email/>:password?<ChangePassword/>:photo?<h1>photo</h1>:<UserProfile/>}
         </div>
     ) 
 }

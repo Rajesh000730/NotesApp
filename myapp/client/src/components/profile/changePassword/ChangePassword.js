@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ChangeEmail = (props) => {
-    
-   window.addEventListener('beforeunload', function (e) {
+const ChangePassword = (props) => {
+
+  window.addEventListener('beforeunload', function (e) {
   // Cancel the event
     e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
   // Chrome requires returnValue to be set
@@ -10,10 +10,10 @@ const ChangeEmail = (props) => {
    });    
 
   return (
-    <div className="email">
-    <h1>email</h1>
+    <div>
+       <h1>password</h1>
     </div>
   )
 }
 
-export default ChangeEmail;
+export default ChangePassword;

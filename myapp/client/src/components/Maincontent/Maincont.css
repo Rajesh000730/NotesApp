@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
 .main__container--mainContent{
-    width: 40%;
+    width: 60%;
     height: 75%;
     color: whitesmoke;
     display: flex;
@@ -38,4 +38,12 @@
 }
 .main__container--mainContent button:active {
     background-color: rgb(230, 19, 19);
+}
+@media (max-width: 1336px){
+    .main__container--mainContent p{
+        font-size: 1.25rem;
+    }
+    .main__container--mainContent{
+        width: 90%;
+    }
 }

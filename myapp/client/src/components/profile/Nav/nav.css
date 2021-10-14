@@ -2,12 +2,14 @@
 
 .nav__container{
 width: 100%;
-height: 4rem;
+height: 7%;
 background-color: hsl(196, 100%, 89%);
 display: flex;
 align-items: center;
 justify-content: space-between;
 font-family: 'Roboto', sans-serif;
+
+z-index: 2;
 }
 .nav__container button{
 	position: relative;
@@ -87,6 +89,7 @@ font-family: 'Roboto', sans-serif;
 	line-height: 15px;
 	border-radius: 10px;
 	transform-origin: top;
+	z-index: 999;
 
 
 }
@@ -113,15 +116,51 @@ font-family: 'Roboto', sans-serif;
 
 }
 
+.listitems{
+	position: absolute;
+	width: 150px;
+	height: auto;
+	top: 6%;
+	left: 10px;
+	z-index: 999;
+	background-color: #2e2e2e;
+    line-height: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	border-radius: 10px;
+	box-sizing: border-box;
+	transform-origin: top;
+	animation: ani 0.5s ;
+}
+
+
+
+.listitems p{
+	color: #ebebeb;
+	padding: 10px;
+	font-size: 1.2rem;
+}
+
 @media (max-width: 486px){
 	.nav__elements--container button{
+
 		display: none;
 	}
 }
 @media (max-width: 1111px){
+	.backbutton{
+		display: none;
+	}
 	.nav__elements--container button{
 		display: none;
 	}
+}
+@media (min-width: 1112px){
+	.listicon{
+		display: none;
+	}
+	
 }
 @media (max-width: 1435px){
 	.nav__elements--container{
