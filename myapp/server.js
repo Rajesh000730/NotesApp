@@ -11,7 +11,8 @@ const isauthenticated = require('./config/isauthorised')
 const signincontroller = require('./controllers/signincontroller')
 const authcontroller = require('./controllers/authcontroller')
 const createdose = require('./controllers/createdoses')
-const getdoses = require('./controllers/getdoses') 
+const getdoses = require('./controllers/getdoses')
+const deletedoses = require('./controllers/delete1dose') 
 const port = 5000;
 //mongodb connection
 //-------------------------------------------------------------------------------
@@ -42,7 +43,10 @@ app.post('/signin', signincontroller.signin)
 app.post('/auth', authcontroller.auth)
 
 app.post('/user/doses', createdose.createdose)
+
 app.get('/user/doses', getdoses.getdoses)
+
+app.delete('/user/doses', deletedoses.deletedoses)
 app.listen(port, ()=>{
     console.log('app is running at http://localhost:5000')
 })

@@ -1,9 +1,8 @@
 const doses = require('../models/dose')
 
 exports.getdoses = (req,res)=>{
-      const name = req.params.name
-      console.log(name);
-      doses.findOne({name:"raju"})
-      .then(data => res.send(data))
+      const name = req.query.name
+      doses.find({name:name}).sort({"time":-1})
+      .then((data) => res.send(data))
       .catch(err=>console.log('error'))
 }
