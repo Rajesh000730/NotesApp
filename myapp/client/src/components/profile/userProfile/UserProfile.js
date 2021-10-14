@@ -14,7 +14,16 @@ const UserProfile = (props) => {
    const [fre, setfre] = useState('')
    const [doses, setdoses] = useState([])  
   
+   
+  useEffect(() => {
+    axios.get('http://localhost:5000/user/doses',{params:{name:"rajesh"}}).then((data)=>{
+        setdoses(data.data)
+        console.log(data.data)
+      }).catch((err)=>{
+        console.log(err)
+      })
     
+  }, []) 
    const handledoschange = (e)=>{
     setdos(e.target.value)
    }
@@ -26,9 +35,7 @@ const UserProfile = (props) => {
    }
 
    const [datae,setdatae] =  useState([])
-    useEffect(() => {
-    setdatae(globname)
-}, [globname]); // Only re-run the effect if count changes
+
    const handleclass1 = ()=>{
      state1==="none"?setstate1("edit1"):setstate1("none");
      console.log('hi')
@@ -44,29 +51,25 @@ const UserProfile = (props) => {
       dosage: des,
       frequency: fre,
 
-    }).then((data)=>{console.log(data)
-
     }).then(()=>{
-      axios.get('http://localhost:5000/user/doses',{params:{name:"rajesh"}}).then((data)=>{
-        console.log(data)
-      }).catch((err)=>{
-        console.log(err)
-      })
+      setstate1("none")
+      window.location.reload()
     })
 
-    setstate1("none")
+    
 
   }
    
   const handleclose = ()=>{
     setstate1("none")
   } 
+  
 
   return (
     <div className="doses__container">
     <button onClick={handleclass1}>Add</button>
         <div className="doses__innercontainer">
-           {datae.length>=1?datae.map((data)=><Dose key={data.id} id={data.id} dosename={data.dosename} description={data.description} frequency={data.frequency}/>):<h1></h1>}
+           {doses.length>=1?doses.map((data)=><Dose key={data._id} id={data._id} dosename={data.dosename} dosage={data.dosage} frequency={data.frequency}/>):<h1></h1>}
            
         </div>
 
