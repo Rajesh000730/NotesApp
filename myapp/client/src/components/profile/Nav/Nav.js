@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+
 import {
   Link
 } from "react-router-dom";
@@ -7,6 +8,8 @@ import {useDispatch} from 'react-redux'
 import { decrement, setemailtrue, setfalse, setpasswordtrue } from '../../../authslice'
 const Nav = (props) => {
   
+  
+
   const visible = props.visible 
   const [state,setstate] = useState("none")
   const [state2,setstate2] = useState("none")
