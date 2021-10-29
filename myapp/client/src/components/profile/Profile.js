@@ -18,10 +18,11 @@ function Profile(props) {
     {if(window.sessionStorage){
     
         axios.post('http://localhost:5000/auth',{token:window.sessionStorage.jwt})
-        .then((res)=>{setauth(res.data.false); setusername(res.data.data.name);})
+        .then((res)=>{setauth(res.data.false); setusername(res.data.data.name); console.log(res.data)})
         .catch(err=>console.log('err'))
        
     }
+
     }
     
     

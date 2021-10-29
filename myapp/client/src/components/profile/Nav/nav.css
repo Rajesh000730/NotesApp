@@ -34,8 +34,8 @@ z-index: 2;
     background-color: rgb(230, 19, 19);
 }
 
-.nav__elements--container{
-	width: 20%;
+.nav__elements---container{
+	width: 10%;
     height: 100%;
     
     display: flex;
@@ -93,6 +93,8 @@ z-index: 2;
 
 
 }
+
+
 .user--details p{
 	font-size: 1.07em	;
     
@@ -100,10 +102,10 @@ z-index: 2;
 
 @keyframes ani {
 	0%{
-		transform: scaleY(0);
+		transform: scalex(0);
 	}
 	100%{
-		transform: scaleY(1)
+		transform: scalex(1)
 	}
 }
 
@@ -118,28 +120,52 @@ z-index: 2;
 
 .listitems{
 	position: absolute;
-	width: 150px;
-	height: auto;
-	top: 6%;
-	left: 10px;
+	width: 250px;
+	height: 93%;
+	top: 7%;
+	
 	z-index: 999;
-	background-color: #2e2e2e;
+	background-color: #000000;
     line-height: 0px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-	border-radius: 10px;
+    padding: 10px;
+	color: white;
 	box-sizing: border-box;
-	transform-origin: top;
+	transform-origin: left;
 	animation: ani 0.5s ;
 }
 
 
 
 .listitems p{
-	color: #ebebeb;
+	text-decoration: none;
 	padding: 10px;
 	font-size: 1.2rem;
+	padding: 30px;
+	margin: 0;
+	color: white;
+}
+.listitems p:hover{
+   background-color: rgb(230, 19, 19);
+   cursor: pointer;
+   color: #e2e2e2;	
+   
+
+}
+
+
+Link{
+	color: black;
+}
+.list:hover{
+	cursor: pointer;
+	
+}
+
+.profile{
+	position: relative;
+	right: 10px;
 }
 
 @media (max-width: 486px){
@@ -156,12 +182,7 @@ z-index: 2;
 		display: none;
 	}
 }
-@media (min-width: 1112px){
-	.listicon{
-		display: none;
-	}
-	
-}
+
 @media (max-width: 1435px){
 	.nav__elements--container{
 		width: 30%;

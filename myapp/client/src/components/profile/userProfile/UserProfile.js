@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './userprofile.css'
-import Dose from './Doses/Dose'
+import './Doses/dose.css'
 import { setdatar } from '../../../authslice'
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
+import Dose from './Doses/Dose';
+
+const you = (setdoses, setloader)=>{
+  axios.get('http://localhost:5000/user/doses',{params:{name:"rajesh"}}).then((data)=>{
+        setdoses(data.data)
+      }).then(()=>{ setloader("loaderfade") })
+      .catch((err)=>{
+        console.log(err)
+      })
+}
 const UserProfile = (props) => {
    const globname = useSelector((state) => state.authslicered.datar)
    const dispatch = useDispatch();
-   const [i, seti] = useState(0);
+   const [loader, setloader] = useState("load");
    const [state1,setstate1] = useState("none")
    const [dos, setdos] = useState('')
    const [des, setdes] = useState('')
@@ -16,12 +26,8 @@ const UserProfile = (props) => {
   
    
   useEffect(() => {
-    axios.get('http://localhost:5000/user/doses',{params:{name:"rajesh"}}).then((data)=>{
-        setdoses(data.data)
-        console.log(data.data)
-      }).catch((err)=>{
-        console.log(err)
-      })
+    you(setdoses);
+    
     
   }, []) 
    const handledoschange = (e)=>{
@@ -53,7 +59,7 @@ const UserProfile = (props) => {
 
     }).then(()=>{
       setstate1("none")
-      window.location.reload()
+      you(setdoses, setloader)
     })
 
     
@@ -67,18 +73,20 @@ const UserProfile = (props) => {
 
   return (
     <div className="doses__container">
+      {/* <div className={loader}></div> */}
     <button onClick={handleclass1}>Add</button>
         <div className="doses__innercontainer">
-           {doses.length>=1?doses.map((data)=><Dose key={data._id} id={data._id} dosename={data.dosename} dosage={data.dosage} frequency={data.frequency}/>):<h1></h1>}
+           {doses.length>=1?doses.map((data)=><Dose key={data._id} id={data._id} dosename={data.dosename} dosage={data.dosage} frequency={data.frequency} set={setdoses} setfun = {you}/> ):<h1></h1>}
            
         </div>
 
       <div className={state1}>
           <div className="close1" onClick={handleclose}><i className="bi bi-x-lg"></i></div>
          <div className="edit__elements">
-            <input type="text" placeholder="Dosename" onChange={handledoschange} required={true}/>
-            <input type="text" placeholder="Dosage" onChange={handledeschange} required={true}/>
-            <input type="text" placeholder="Frequency" onChange={handlefrechange} required={true}/> 
+            
+            <input id="dose" type="text" placeholder="Dosename" onChange={handledoschange} required={true} />
+            <input type="text" placeholder="Dosage" onChange={handledeschange} required={true}  />
+            <input type="text" placeholder="Frequency" onChange={handlefrechange} required={true} /> 
   
          <button onClick={handlesubmit}>Submit</button>
          </div>

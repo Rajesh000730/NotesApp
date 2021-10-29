@@ -4,11 +4,11 @@ width: 100%;
 height: 4rem;
 background-color: hsl(196, 100%, 89%);
 display: flex;
-justify-content: flex-end;
+justify-content: space-between;
 font-family: 'Roboto', sans-serif;
 }
 
-.nav__elements--container{
+.nav__elements-container{
     width: 30%;
     height: 100%;
     
@@ -18,7 +18,7 @@ font-family: 'Roboto', sans-serif;
 
 }
 
-.nav__elements--container button{
+.nav__elements-container button{
     font-size: 1.3rem;
     width: auto;
     height: auto;
@@ -29,11 +29,35 @@ font-family: 'Roboto', sans-serif;
     color: white;
     text-decoration: none
 }
-.nav__elements--container button:hover{
+.nav__elements-container button:hover{
     background-color: rgb(184, 12, 12);
     cursor: pointer;
 }
-.nav__elements--container button:active{
+.nav__elements-container button:active{
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     background-color: rgb(230, 19, 19);
 }
+.nav--list{
+    visibility: hidden;
+}
+
+@media (max-width:1000px){
+    .nav__elements-container button{
+        font-size: 1.2rem;
+        padding: 6px;
+        display: block;
+        text-decoration: none;
+       
+    }
+}
+@media (max-width:600px){
+    .nav__elements-container button{
+        visibility: hidden;
+    }
+    .nav--list{
+        visibility: visible;
+    }
+
+  
+}
+

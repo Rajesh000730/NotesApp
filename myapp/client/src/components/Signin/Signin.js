@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import './Signin.css'
 import {useState} from 'react'
 import {  useDispatch } from 'react-redux'
 import {  increment } from '../../authslice'
 import axios from 'axios'
+
 function Signin(props) {
     const [name, setname] = useState('')
     const [age, setage] = useState('')
     const [auth, setauth] = useState(false)
     const dispatch = useDispatch()
-    if(!props.auth)
+    useEffect(() => {
+        if(!props.auth)
     {if(window.sessionStorage){
     
         axios.post('http://localhost:5000/auth',{token:window.sessionStorage.jwt})
-        .then(res=>setauth(res.data))
+        .then(res=>setauth(res.data.false))
         .catch(err=>console.log('err'))
        
     }
     }
+       
+    }, [])
     if(auth){
         dispatch(increment())
     }

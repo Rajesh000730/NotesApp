@@ -58,3 +58,15 @@
         width: 90%;
     }
 }
+
+@media (max-width:800px){
+    .main__container--mainContent img{
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        width: 200px;
+        height: auto;
+        
+    }
+    
+}

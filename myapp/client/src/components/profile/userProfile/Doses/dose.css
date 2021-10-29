@@ -1,6 +1,6 @@
 .doses{
 	width: 300px;
-	min-height: 330px;
+	height: 330px;
 	border-radius: 10px;
 	background-color: black;
 	color: white;
@@ -15,8 +15,12 @@
 	margin-bottom: none	;
 	position: relative;
 	word-break: break-all;
+	overflow-y: scroll;
+	
 }
-
+.doses::-webkit-scrollbar{
+  display: none;
+}
 .delete{
 	position: absolute;
 	right: 10px;
