@@ -9,11 +9,13 @@ function Profilecomp(props) {
     
     const [photo,setphoto] = useState(false);
 
+
+
     return (
         
         <div className="profilecont">
             <Nav  />
-            <UserProfile/>
+            <UserProfile user={props.user}/>
         </div>
     ) 
 }

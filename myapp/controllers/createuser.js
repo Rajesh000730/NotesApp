@@ -2,13 +2,14 @@ const User = require('../models/user')
 
 exports.createuser = (req,res)=>{
     const user = new User({
-        name:req.body.name,
-        age:req.body.age
+        email:req.body.email,
+        username:req.body.username,
+        password:req.body.password
     })
     user.save((err)=>{
         if(err) 
         res.send(err);
         else
-        res.send('user created')
+        res.send(req.body)
     })
 }

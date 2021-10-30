@@ -6,18 +6,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
 import Dose from './Doses/Dose';
 
-const you = (setdoses, setloader)=>{
-  axios.get('http://localhost:5000/user/doses',{params:{name:"rajesh"}}).then((data)=>{
+const you = (setdoses, setemail)=>{
+  axios.post('http://localhost:5000/auth',{token:window.sessionStorage.jwt})
+        .then((res)=>{
+          axios.get('http://localhost:5000/user/doses',{params:{email:res.data.data.email}}).then((data)=>{
         setdoses(data.data)
-      }).then(()=>{ setloader("loaderfade") })
+      })
       .catch((err)=>{
         console.log(err)
-      })
+      });
+      setemail(res.data.data.email)}).catch((err)=>{console.log(err)})
+  
 }
 const UserProfile = (props) => {
-   const globname = useSelector((state) => state.authslicered.datar)
+  const user = useSelector((state)=> state.authslicered.userprofile)
+  
    const dispatch = useDispatch();
-   const [loader, setloader] = useState("load");
+   const [email, setemail] = useState("");
    const [state1,setstate1] = useState("none")
    const [dos, setdos] = useState('')
    const [des, setdes] = useState('')
@@ -26,10 +31,12 @@ const UserProfile = (props) => {
   
    
   useEffect(() => {
-    you(setdoses);
+    you(setdoses, setemail);
+    
     
     
   }, []) 
+  
    const handledoschange = (e)=>{
     setdos(e.target.value)
    }
@@ -52,14 +59,14 @@ const UserProfile = (props) => {
       return }
 
     axios.post('http://localhost:5000/user/doses',{
-      name: "rajesh",
+      email: email,
       dosename: dos,
       dosage: des,
       frequency: fre,
 
     }).then(()=>{
       setstate1("none")
-      you(setdoses, setloader)
+      you(setdoses)
     })
 
     

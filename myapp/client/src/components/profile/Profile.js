@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom'
 import Profilecomp from './Profilecomp'
 function Profile(props) {
     const [auth, setauth] = useState(false)
-    const [username, setusername] = useState('rajesh')
+    const [user, setuser] = useState()
     const dispatch = useDispatch()
  
     
@@ -18,7 +18,7 @@ function Profile(props) {
     {if(window.sessionStorage){
     
         axios.post('http://localhost:5000/auth',{token:window.sessionStorage.jwt})
-        .then((res)=>{setauth(res.data.false); setusername(res.data.data.name); console.log(res.data)})
+        .then((res)=>{setauth(res.data.false); setuser(res.data.data); console.log(res.data)})
         .catch(err=>console.log('err'))
        
     }
@@ -37,7 +37,7 @@ function Profile(props) {
     return(
         <div>
             <div className="loader"></div>
-            {props.auth?<Profilecomp />:<Redirect to="/signin" />}
+            {props.auth?<Profilecomp user={user}/>:<Redirect to="/signin" />}
         </div>
         
     )

@@ -1,7 +1,7 @@
 .signup{
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
+    background-image: linear-gradient(to right,#FF416C, #FF4B2B);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .signup__formcont{
-    width: 486px;
+    width: 450px;
     height: 400px;
     background-color: black;
     display: flex;
@@ -39,4 +39,14 @@
 }
 .signup__forminnercont input:focus{
     border: 2px solid rgb(0, 247, 255);
+}
+
+
+@media (max-width:486px){
+    .signup__formcont{
+        width: 90%;
+    }
+    .signup__forminnercont input{
+        font-size: 1rem;
+    }
 }

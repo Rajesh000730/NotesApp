@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import './Signin.css'
 import {useState} from 'react'
-import {  useDispatch } from 'react-redux'
-import {  increment } from '../../authslice'
+import {  useDispatch, useSelector } from 'react-redux'
+import {  increment, setuserprofile } from '../../authslice'
 import axios from 'axios'
 
 function Signin(props) {
-    const [name, setname] = useState('')
-    const [age, setage] = useState('')
+    const user = useSelector((state)=> state.authslicered.userprofile) 
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
     const [auth, setauth] = useState(false)
     const dispatch = useDispatch()
     useEffect(() => {
@@ -30,26 +31,29 @@ function Signin(props) {
 
     
      
-    const handlename = (e)=>{
-        setname(e.target.value)
+    const handleemail = (e)=>{
+        setemail(e.target.value)
     }
-    const handleage=(e)=>{
-        setage(e.target.value)
-        console.log(age)
+    const handlepassword=(e)=>{
+        setpassword(e.target.value)
+        
     }
     const handlestorage = (data)=>{
         if(data.error === "true") return
         window.sessionStorage.setItem('jwt', data.token)
-        console.log(data)
+        // console.log(data)
         dispatch(increment())
+        
+        
         
     }
     const handlesignin=()=>{
 
-         axios.post('http://localhost:5000/signin', {name:name,age:age})
+         axios.post('http://localhost:5000/signin', {email:email,password:password})
         .then(res=>res.data)
-        .then(data=>handlestorage(data))   
+        .then(data=>{handlestorage(data); dispatch(setuserprofile(data))})   
         .catch(err=>console.log(err));
+        console.log(user)
         
         
        
@@ -66,8 +70,8 @@ function Signin(props) {
             <div className="signin__container">
                 <div className="form__container">
                     <div className="form__elements">
-                        <input type='text' placeholder="Name" onChange={handlename}/>
-                        <input type='text' placeholder="Age" onChange={handleage}/>
+                        <input type='text' placeholder="email" onChange={handleemail}/>
+                        <input type='password' placeholder="password" onChange={handlepassword}/>
                         <button onClick={handlesignin}>Signin</button>
                     </div>
                 </div>

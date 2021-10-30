@@ -33,13 +33,14 @@ app.use(cors({
 }));
 app.get('/', homecontroller.index)
 
-app.get('/:nam', profilecontroller.profile)
+app.get('/getuser', profilecontroller.profile)
 
-app.post('/user',createusercontroller.createuser)
 
 app.post('/updateuser', updateusercontroller.update)
 
 app.post('/signin', signincontroller.signin)
+
+app.post('/signup', createusercontroller.createuser)
 
 app.post('/auth', authcontroller.auth)
 

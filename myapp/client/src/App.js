@@ -14,17 +14,19 @@ import { useSelector } from 'react-redux';
 
 
 function App() {
+  
   const auth = useSelector((state) => state.authslicered.auth)
 
   return (
     <Router>
        <div className="App">
        <Switch>
+          
           <Route path="/redir">
             <Redir/>
           </Route>
           <Route exact path="/profile">
-            <Profile auth={auth}/>
+            <Profile auth={auth} />
           </Route>
           <Route exact path="/signin">
             <Signin auth={auth}/>

@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import './nav.css'
 import {useDispatch} from 'react-redux'
-import { decrement,setfalse  } from '../../../authslice'
+import { decrement } from '../../../authslice'
 const Nav = (props) => {
   
   
@@ -21,7 +21,7 @@ const Nav = (props) => {
   const handlesignout = ()=>{
   	window.sessionStorage.removeItem('jwt')
   	dispatch(decrement());
-  	dispatch(setfalse());
+  	
 
   }
   const handleclass = ()=>{

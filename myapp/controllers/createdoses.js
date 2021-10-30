@@ -7,7 +7,7 @@ exports.createdose = (req, res)=>{
 	var d = new Date();
     var n = d.toLocaleString();
 	const dose = new Dose({
-		name: req.body.name,
+		email: req.body.email,
 		dosename: req.body.dosename,
 		dosage: req.body.dosage,
 		frequency: req.body.frequency,
