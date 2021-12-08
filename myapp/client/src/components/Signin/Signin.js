@@ -3,14 +3,16 @@ import { Redirect } from 'react-router-dom'
 import './Signin.css'
 import {useState} from 'react'
 import {  useDispatch, useSelector } from 'react-redux'
-import {  increment, setuserprofile } from '../../authslice'
+import {  increment } from '../../authslice'
 import axios from 'axios'
 
 function Signin(props) {
-    const user = useSelector((state)=> state.authslicered.userprofile) 
+   
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     const [auth, setauth] = useState(false)
+    const [usererror, setusererror] = useState(false)
+    const [passworderror, setpassworderror] = useState(false)
     const dispatch = useDispatch()
     useEffect(() => {
         if(!props.auth)
@@ -39,7 +41,14 @@ function Signin(props) {
         
     }
     const handlestorage = (data)=>{
-        if(data.error === "true") return
+        if(data.error === "true") {
+            setusererror(true)
+            return
+        }
+        if(data.passworderror==true){
+            setpassworderror(true)
+            return
+        }
         window.sessionStorage.setItem('jwt', data.token)
         // console.log(data)
         dispatch(increment())
@@ -47,13 +56,17 @@ function Signin(props) {
         
         
     }
+    const handlefocus = ()=>{
+        setusererror(false);
+        setpassworderror(false)
+    }
     const handlesignin=()=>{
 
          axios.post('http://localhost:5000/signin', {email:email,password:password})
         .then(res=>res.data)
-        .then(data=>{handlestorage(data); dispatch(setuserprofile(data))})   
+        .then(data=>{handlestorage(data); })   
         .catch(err=>console.log(err));
-        console.log(user)
+        // console.log(user)
         
         
        
@@ -70,9 +83,14 @@ function Signin(props) {
             <div className="signin__container">
                 <div className="form__container">
                     <div className="form__elements">
-                        <input type='text' placeholder="email" onChange={handleemail}/>
-                        <input type='password' placeholder="password" onChange={handlepassword}/>
-                        <button onClick={handlesignin}>Signin</button>
+                        {usererror?<h3 style={{color:"red"}}>This email is not registered!!!</h3>:<h3 className="text-white font-bold">Enter Email</h3>}
+                        <input type='text' placeholder="email" onChange={handleemail} onFocus={handlefocus}/>
+                        {passworderror?<h3 style={{color:"red"}}>Incorrect Password</h3>:<h3 className="text-white font-bold">Enter Password</h3>}
+                        <input type='password' placeholder="password" onChange={handlepassword} onFocus={handlefocus}/>
+                        <button className="font-bold relative left-32" onClick={handlesignin}>Signin</button>
+                        <div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,9 @@ const you = (setdoses, setemail)=>{
       .catch((err)=>{
         console.log(err)
       });
-      setemail(res.data.data.email)}).catch((err)=>{console.log(err)})
+      setemail(res.data.data.email);
+         
+    }).catch((err)=>{console.log(err)})
   
 }
 const UserProfile = (props) => {
@@ -81,7 +83,7 @@ const UserProfile = (props) => {
   return (
     <div className="doses__container">
       {/* <div className={loader}></div> */}
-    <button onClick={handleclass1}>Add</button>
+    <button className="font-bold" onClick={handleclass1}>Add</button>
         <div className="doses__innercontainer">
            {doses.length>=1?doses.map((data)=><Dose key={data._id} id={data._id} dosename={data.dosename} dosage={data.dosage} frequency={data.frequency} set={setdoses} setfun = {you}/> ):<h1></h1>}
            

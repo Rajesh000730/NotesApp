@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
 .main__container--nav{
 width: 100%;
-height: 4rem;
-background-color: hsl(196, 100%, 89%);
+height: 6rem;
+background-color: transparent;
 display: flex;
 justify-content: space-between;
 font-family: 'Roboto', sans-serif;
+/*border-bottom: 2px solid white;*/
 }
 
 .nav__elements-container{

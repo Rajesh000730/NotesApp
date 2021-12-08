@@ -11,6 +11,7 @@ import SIgnup from './components/Signup/SIgnup';
 import Profile from './components/profile/Profile';
 import Redir from './components/Redirect/Redir';
 import { useSelector } from 'react-redux';
+import Editprofile from './components/Editprofile/Editprofile';
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
     <Router>
        <div className="App">
        <Switch>
-          
+          <Route exact path="/editprofile">
+            <Editprofile/>
+          </Route>
           <Route path="/redir">
             <Redir/>
           </Route>

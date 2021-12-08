@@ -2,6 +2,7 @@
     width: 100%;
     height: 70%;
     background-image: linear-gradient(to right, #FF0099,#493240);
+    /*background-color: black;*/
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -39,11 +39,11 @@ const Nav = (props) => {
     <div id="navbar" className="nav__container" >
 	    
       <div className="listicon">
-         <h1 onClick={handleclass2} className="list"><i class="bi bi-list"></i></h1> 
+         <h1 onClick={handleclass2} className="text-3xl cursor-pointer"><i class="bi bi-list"></i></h1> 
          <div className={state2}>
-            <Link to="/" style={{textDecoration:"none"}}><p>Home</p></Link>
-            <p>Edit Profile</p>
-            <p onClick={handlesignout}>Signout</p>
+            <Link to="/" style={{textDecoration:"none"}}><p className="font-bold">Home</p></Link>
+            <Link to="/editprofile"><p className="font-bold">Edit Profile</p></Link>
+            <p className="font-bold" onClick={handlesignout}>Signout</p>
          
          </div>
       </div>

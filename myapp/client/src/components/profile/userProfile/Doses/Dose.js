@@ -47,20 +47,20 @@ const you = props.setfun
   return (
 
     <div className="doses">
-		 <h1>{props.dosename}</h1>
-		 <p>Dosage: {props.dosage}</p>
-     <p>Frequency: {props.frequency}</p>
-     <button onClick={handleupdatecont}>Update</button>
+		 <p className="text-3xl font-bold">{props.dosename}</p>
+		 <p className="font-bold">Dosage: {props.dosage}</p>
+     <p className="font-bold">Frequency: {props.frequency}</p>
+     <button className="font-bold" onClick={handleupdatecont}>Update</button>
 		 <div className="delete" onClick={handledelete}><i className="bi bi-x-lg"></i></div>
      <div className={update} >
      <div className="closeupdate" onClick={handlecloseupdate}>
        <i className="bi bi-x-lg"></i>
      
        </div>
-       <input type="text" value={dosename} onChange={handlechangedname} required={true}/>
-       <input type="text" value={dosage} onChange={handlechangedosage} required={true}/>
-       <input type="text" value={frequency} onChange = {handlechangefrequency} required={true}/>
-       <button onClick={handleupdate}>Update</button>
+       <input type="text" defautValue={props.dosename} onChange={handlechangedname} required={true} className="text-black"/>
+       <input type="text" defaultValue={props.dosage} onChange={handlechangedosage} required={true} className="text-black"/>
+       <input type="text" defaultValue={props.frequency} onChange = {handlechangefrequency} required={true} className="text-black"/>
+       <button className="font-bold" onClick={handleupdate}>Update</button>
      </div>
     </div>
   )
