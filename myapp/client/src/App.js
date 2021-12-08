@@ -13,7 +13,7 @@ import Redir from './components/Redirect/Redir';
 import { useSelector } from 'react-redux';
 import Editprofile from './components/Editprofile/Editprofile';
 
-
+// this the main app
 function App() {
   
   const auth = useSelector((state) => state.authslicered.auth)
