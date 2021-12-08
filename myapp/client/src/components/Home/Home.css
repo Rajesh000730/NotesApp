@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    overflow-y: hidden;
 }
 
 @media (max-width:800px){

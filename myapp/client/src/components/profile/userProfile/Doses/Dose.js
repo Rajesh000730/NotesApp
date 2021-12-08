@@ -57,7 +57,7 @@ const you = props.setfun
        <i className="bi bi-x-lg"></i>
      
        </div>
-       <input type="text" defautValue={props.dosename} onChange={handlechangedname} required={true} className="text-black"/>
+       <input type="text" defaultValue={props.dosename} onChange={handlechangedname} required={true} className="text-black"/>
        <input type="text" defaultValue={props.dosage} onChange={handlechangedosage} required={true} className="text-black"/>
        <input type="text" defaultValue={props.frequency} onChange = {handlechangefrequency} required={true} className="text-black"/>
        <button className="font-bold" onClick={handleupdate}>Update</button>
