@@ -16,7 +16,7 @@ import Editprofile from './components/Editprofile/Editprofile';
 // this the main app
 function App() {
   
-  const auth = useSelector((state) => state.authslicered.auth)
+  const store = useSelector((state) => state.authslicered)
 
   return (
     <Router>
@@ -29,10 +29,10 @@ function App() {
             <Redir/>
           </Route>
           <Route exact path="/profile">
-            <Profile auth={auth} />
+            <Profile store={store} />
           </Route>
           <Route exact path="/signin">
-            <Signin auth={auth}/>
+            <Signin auth={store.auth}/>
           </Route>
           <Route path="/signup">
             <SIgnup />
